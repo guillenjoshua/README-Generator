@@ -1,6 +1,8 @@
 
 const fs = require('fs');
 const inquirer = require('inquirer');
+const utils = require('utils');
+
 
 const readMeQuestions = [
 {
@@ -91,13 +93,16 @@ inquirer
 
     .prompt(readMeQuestions).then(response => {
 
-    fs.appendFileSync('README.md', ('#' + response.Title) + '\n', function(err) {
+
+    // Creates the Title and the header of the README
+    fs.appendFileSync('README.md', `# ${response.Title}` + '\n', function(err) {
         if (err) {
             return console.log(err)
         }
         console.log('Guuud!');
     }); 
 
+    //Creates the Descirption of the users project
     fs.appendFileSync('README.md', ('## Description' + '\n' + response.Description) + '\n', function(err) {
         if (err) {
             return console.log(err)
@@ -105,6 +110,7 @@ inquirer
         console.log('Guuud!');
     }); 
 
+    //Creates the Installation Instructions
     fs.appendFileSync('README.md', ('## Installation Instructions' + '\n' + response.Installation) + '\n', function(err) {
         if (err) {
             return console.log(err)
@@ -112,6 +118,7 @@ inquirer
         console.log('Guuud!');
     }); 
 
+    //Creates the Usage Instructions
     fs.appendFileSync('README.md', ('## Usage' + '\n' + response.Usage) + '\n', function(err) {
         if (err) {
             return console.log(err)
@@ -119,6 +126,7 @@ inquirer
         console.log('Guuud!');
     }); 
 
+    //Creates the license chosen from the given options
     fs.appendFileSync('README.md', ('## License' + '\n' + response.License) + '\n', function(err) {
         if (err) {
             return console.log(err)
@@ -133,6 +141,7 @@ inquirer
         console.log('Guuud!');
     });
 
+    //Creates the Test Instructions
     fs.appendFileSync('README.md', ('## How to Run Tests' + '\n' + response.Tests) + '\n', function(err) {
         if (err) {
             return console.log(err)
@@ -140,6 +149,7 @@ inquirer
         console.log('Guuud!');
     });
 
+    //Creates list of Authors of project
     fs.appendFileSync('README.md', ('## Authors' + '\n' + response.Authors) + '\n', function(err) {
         if (err) {
             return console.log(err)
@@ -147,6 +157,7 @@ inquirer
         console.log('Guuud!');
     });
 
+    //Creates GitHub Username that is listed
     fs.appendFileSync('README.md', ('### GitHub Username: ' + '\n' + response.Questions) + '\n', function(err) {
         if (err) {
             return console.log(err)
@@ -154,6 +165,7 @@ inquirer
         console.log('Guuud!');
     });
 
+    //Creates name of GitHub user profile
     fs.appendFileSync('README.md', ('#### GitHub Profile: ' + '\n' + response.Questions1) + '\n', function(err) {
         if (err) {
             return console.log(err)
@@ -161,7 +173,8 @@ inquirer
         console.log('Guuud!');
     });
 
-    fs.appendFileSync('README.md', ('#### Email Contact: ' + '\n' + response.Questions2) + '\n', function(err) {
+    //Creates the Email Contact
+    fs.appendFileSync('README.md', ("#### Email Contact: " + "\n" + response.Questions2) + '\n', function(err) {
         if (err) {
             return console.log(err)
         }
@@ -169,3 +182,4 @@ inquirer
     });
 
 })
+
