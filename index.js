@@ -7,6 +7,12 @@ const utils = require('utils');
 const readMeQuestions = [
 {
     type: 'input',
+    name: 'badge',
+    message: 'Insert badge ID'
+
+},
+{
+    type: 'input',
     name: 'Title',
     message: 'What is the title of your project/README?'
 },
@@ -32,7 +38,7 @@ const readMeQuestions = [
 
 {
     type: 'checkbox',
-    meassage: 'Select License',
+    message: 'Select License:',
     name: 'License', 
     choices: [
         'MIT License',
@@ -102,6 +108,15 @@ inquirer
         console.log('Guuud!');
     }); 
 
+
+    fs.appendFileSync('README.md', ('\n' + response.badge) + '\n', function(err) {
+        if (err) {
+            return console.log(err)
+        }
+        console.log('Guuud!');
+    }); 
+    
+
     //Creates the Descirption of the users project
     fs.appendFileSync('README.md', ('## Description' + '\n' + response.Description) + '\n', function(err) {
         if (err) {
@@ -109,6 +124,13 @@ inquirer
         }
         console.log('Guuud!');
     }); 
+
+
+    //Table of Contents
+    // fs.appendFileSync('README.md', ('## Table of Contents' + '\n' + '*[Installation Instructions](#installation-instructions)')); 
+      
+
+
 
     //Creates the Installation Instructions
     fs.appendFileSync('README.md', ('## Installation Instructions' + '\n' + response.Installation) + '\n', function(err) {
@@ -134,6 +156,7 @@ inquirer
         console.log('Guuud!');
     }); 
 
+    //Creates rules for contribution
     fs.appendFileSync('README.md', ('## How to Contribute' + '\n' + response.Contributing) + '\n', function(err) {
         if (err) {
             return console.log(err)
@@ -157,7 +180,7 @@ inquirer
         console.log('Guuud!');
     });
 
-    //Creates GitHub Username that is listed
+    //Creates GitHub Username that is listed (Questions)
     fs.appendFileSync('README.md', ('### GitHub Username: ' + '\n' + response.Questions) + '\n', function(err) {
         if (err) {
             return console.log(err)
@@ -165,16 +188,16 @@ inquirer
         console.log('Guuud!');
     });
 
-    //Creates name of GitHub user profile
-    fs.appendFileSync('README.md', ('#### GitHub Profile: ' + '\n' + response.Questions1) + '\n', function(err) {
+    //Creates name of GitHub user profile (Questions)
+    fs.appendFileSync('README.md', ('### GitHub Profile: ' + '\n' + response.Questions1) + '\n', function(err) {
         if (err) {
             return console.log(err)
         }
         console.log('Guuud!');
     });
 
-    //Creates the Email Contact
-    fs.appendFileSync('README.md', ("#### Email Contact: " + "\n" + response.Questions2) + '\n', function(err) {
+    //Creates the Email Contact (Questions)
+    fs.appendFileSync('README.md', ("### Email Contact: " + "\n" + response.Questions2) + '\n', function(err) {
         if (err) {
             return console.log(err)
         }
