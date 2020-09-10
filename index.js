@@ -26,13 +26,13 @@ const readMeQuestions = [
 {
     type: 'input',
     name: 'Installation',
-    message: 'Installation Instructions: please provide step-by-step'
+    message: 'Installation Instructions: '
 },
 
 {
     type: 'input',
     name: 'Usage',
-    message: 'Instructions for usage and examples.'
+    message: 'Instructions for usage: '
 
 },
 
@@ -57,13 +57,13 @@ const readMeQuestions = [
 {
     type: 'input',
     name: 'Tests',
-    message: 'Run tests with examples'
+    message: 'Run test: '
 },
 
 {
     type: 'input',
     name: 'Authors',
-    message: 'Enter Collaborators Name(s)'
+    message: 'Enter Author(s)/Collaborators Name(s): '
 },
 
 {
@@ -83,12 +83,13 @@ const readMeQuestions = [
     type: 'input',
     name: 'Questions2',
     message: 'Enter your email address for questions'
+},
+
+{
+    type: 'input',
+    name: 'Contents',
+    message: 'Write a table of contents (Please separate by commas)'
 }
-// {
-//     type: 'input',
-//     name: 'Contents',
-//     message: 'Write a table of contents (Must be separated by commas)'
-// }
 
 ]
 
@@ -127,7 +128,12 @@ inquirer
 
 
     //Table of Contents
-    // fs.appendFileSync('README.md', ('## Table of Contents' + '\n' + '*[Installation Instructions](#installation-instructions)')); 
+    fs.appendFileSync('README.md', ('## Table of Contents' + '\n' + '* ' + response.Contents.split(",").join('\n' + '* ')) + '\n', function(err) {
+        if (err) {
+            return console.log(err)
+        }
+        
+    });
       
 
 
